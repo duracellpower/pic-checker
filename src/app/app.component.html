@@ -1,23 +1,44 @@
-<h1>Age Estimator</h1>
+<div class="container">
+  <h1 class="is-size-1 margin-bottom">Pic Checker</h1>
 
-<div id="loginButton" [class.is-hidden]="isLoggedIn"></div>
-<div [class.is-hidden]="!isLoggedIn">
-  <button (click)="logout()">Logout</button>
-  <input type="file" #fileToUpload accept="image/*" />
-  <button
-    class="button is-primary"
-    [class.is-loading]="isLoading"
-    (click)="upload$.emit($event)"
-    [disabled]="noImageYet"
-  >
-    Upload
-  </button>
+  <div id="loginButton" [class.is-hidden]="isLoggedIn"></div>
+  <div [class.is-hidden]="!isLoggedIn">
 
-  <img #imagePreview class="preview-image" />
-  <table class="results" *ngIf="picLabels$ | async; let picLabels">
-    <tr *ngFor="let label of picLabels">
-      <td>{{ label.Name }}</td>
-      <td>{{ label.Confidence }}</td>
-    </tr>
-  </table>
+    <div class="file margin-bottom">
+      <label class="file-label">
+        <input class="file-input" type="file" #fileToUpload accept="image/*" />
+        <span class="file-cta">
+          <span class="file-icon">
+            <i class="fas fa-upload"></i>
+          </span>
+          <span class="file-label">
+            Choose a file…
+          </span>
+        </span>
+      </label>
+      <button
+      class="button is-primary"
+      [class.is-loading]="isLoading"
+      (click)="upload$.emit($event)"
+      [disabled]="noImageYet"
+    >
+      Upload
+    </button>
+    </div>
+
+    <div>
+      <img #imagePreview class="preview-image margin-bottom" />
+
+  </div>
+    <table class="results" *ngIf="picLabels$ | async; let picLabels">
+      <tr *ngFor="let label of picLabels">
+        <td class="padding-right">{{ label.Name }}</td>
+        <td>{{ label.Confidence }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="margin-bottom margin-top">
+    <button (click)="logout()" class="button is-danger is-outlined">Logout</button>
+  </div>
 </div>
