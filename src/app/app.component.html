@@ -1,0 +1,23 @@
+<h1>Age Estimator</h1>
+
+<div id="loginButton" [class.is-hidden]="isLoggedIn"></div>
+<div [class.is-hidden]="!isLoggedIn">
+  <button (click)="logout()">Logout</button>
+  <input type="file" #fileToUpload accept="image/*" />
+  <button
+    class="button is-primary"
+    [class.is-loading]="isLoading"
+    (click)="upload$.emit($event)"
+    [disabled]="noImageYet"
+  >
+    Upload
+  </button>
+
+  <img #imagePreview class="preview-image" />
+  <table class="results" *ngIf="picLabels$ | async; let picLabels">
+    <tr *ngFor="let label of picLabels">
+      <td>{{ label.Name }}</td>
+      <td>{{ label.Confidence }}</td>
+    </tr>
+  </table>
+</div>
