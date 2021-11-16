@@ -22,7 +22,7 @@
     "@types/aws-sdk": "^2.7.0",
     "@types/gapi": "0.0.39",
     "@types/gapi.auth2": "0.0.51",
-    "aws-sdk": "^2.641.0",
+    "aws-sdk": "^2.814.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
